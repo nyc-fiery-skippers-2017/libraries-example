@@ -3,6 +3,7 @@ ruby '~> 2.2', '>= 2.2.2'
 
 # PostgreSQL driver
 gem 'pg', '~> 0.18'
+gem "pry"
 
 # Sinatra driver
 gem 'sinatra', '~> 1.4.8'

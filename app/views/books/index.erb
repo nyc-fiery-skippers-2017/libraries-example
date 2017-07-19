@@ -1,0 +1,13 @@
+<div class="">
+  <ul>
+    <% if @books.length == 0%>
+      <h4></h4>
+    <% else %>
+      <% @books.each do |book| %>
+        <li><a href="/books/<%= book.id%>"><%= book.title%></a></li>
+      <% end %>
+    <% end %>
+
+  </ul>
+    <a href="/books/new">Add a new book</a>
+</div>
