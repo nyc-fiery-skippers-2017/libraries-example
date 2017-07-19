@@ -17,8 +17,7 @@ get '/books/:id' do
 end
 
 post '/books' do
-  binding.pry
-  @book = Book.new(title: params[:title], author: params[:author])
+  @book = Book.new(params[:book])
   if @book.save
     redirect "/books"
   else
@@ -28,14 +27,26 @@ post '/books' do
 end
 
 get '/books/:id/edit' do
-  # edit.erb
+  @book = Book.find_by(id: params[:id])
+  erb :'/books/edit'
 end
 
 
 put '/books/:id' do
-
+  @book = Book.find_by(id: params[:id])
+  if @book.update(params[:book])
+    redirect '/books'
+  else
+    @errors = @book.errors.full_messages
+    erb :'/books/edit'
+  end
 end
 
 
-delete '/bookd/:id' do
+delete '/books/:id' do
+  book = Book.find_by(id: params[:id])
+  if book
+    book.destroy
+    redirect '/books'
+  end
 end
