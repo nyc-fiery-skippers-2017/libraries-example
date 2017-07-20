@@ -3,15 +3,19 @@ get '/' do
 end
 
 get '/books' do
+  require_user
   @books = Book.all
+
   erb :'/books/index'
 end
 
 get '/books/new' do
+  require_user
   erb :'/books/new'
 end
 
 get '/books/:id' do
+  require_user
   @book = Book.find_by(id: params[:id])
   erb :'/books/show'
 end
@@ -27,6 +31,7 @@ post '/books' do
 end
 
 get '/books/:id/edit' do
+  require_user
   @book = Book.find_by(id: params[:id])
   erb :'/books/edit'
 end

@@ -11,8 +11,15 @@
   <title></title>
 </head>
 <ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/books">Books</a></li>
+  <% if current_user %>
+    <li><a href="/">Home</a></li>
+    <li><a href="/books">Books</a></li>
+    <li><a href="#">Logout</a></li>
+  <% else %>
+    <li><a href="/users/new">Register</a></li>
+    <li><a href="/session/new">Login</a></li>
+  <% end%>
+
 </ul>
 <body>
   <%= yield %>
